@@ -1,13 +1,18 @@
 #include<iostream>
+#include "LinkedList.h"
 using namespace std;
 
-
+struct Node {
+	int data;
+	Node *next;
+};
 
 void BaiTap1();
 void BaiTap2();
 void BaiTap3();
 void BaiTap4();
 void BaiTap5();
+void inmang(int a[],int &n);
 
 
 int main() {
@@ -39,18 +44,70 @@ int main() {
 	return 0;
 }
 
-//Baitap1
+//--------BAITAP1---------
+void inmang(int a[], int &n) {
+	for (int i = 0; i < n; i++) {
+		cout << "Gia tri phan tu thu " << i+1 << " la: " << a[i] << endl;
+	}
+}
+
 void BaiTap1() {
 
 	int mang[100];
 	int n = 0;
-	cout << "Nhap gia tri cua n: "; cin >> n;
+	int socantim;
+	bool khongtimthay = true;
+	int socanchen;
+	int vitrichen;
+
+	//Nhap va in ds dac
+	cout << "Nhap so luong phan tu cua danh sach: "; cin >> n;
 	for (int i = 0; i < n; i++) {
-		cout << "Nhap phan tu thu " << n << " : "; cin >> mang[i];
+		cout << "Nhap phan tu thu " << i+1 << ": "; cin >> mang[i];
+	}
+	cout << endl; inmang(mang, n);
+	
+	cout << endl;
+
+	//Tim kiem 
+	cout << "Nhap so can tim: "; cin >> socantim;
+	for (int i = 0; i < n; i++) {
+		if (mang[i] == socantim) {
+			cout << "Vi tri so can tim la: " << i << endl; 
+			khongtimthay = false;
+		}
+	}
+	if (khongtimthay) {
+		cout << "Khong tim thay !\n";
 	}
 	cout << endl;
-	for (int j = 0; j < n; j++) {
-		cout << "Gia tri phan tu thu " << n << " : " << mang[j];
+
+	// Chen
+	cout << "Nhap so can chen trong danh sach: "; cin >> socanchen;
+	cout << "Nhap vi tri can chen: "; cin >> vitrichen;
+	if (vitrichen > n)
+		cout << "Vi tri can chen lon hon so luong phan tu trong danh sach (lon hon " << n << " ) " << endl;
+	else {
+		for (int i = n; i >= vitrichen; i--) mang[i] = mang[i - 1];
+		mang[vitrichen - 1] = socanchen;
+		cout << "Da chen " << socanchen << " vao vi tri thu " << vitrichen << " trong danh sach .\n";
+		n++;
+		inmang(mang, n);
 	}
-	cout << endl;
 }
+
+//---------BAITAP2---------
+
+void BaiTap2() {
+
+}
+void BaiTap3() {
+
+}
+void BaiTap4() {
+
+}
+void BaiTap5() {
+
+}
+
